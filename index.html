@@ -1,13 +1,9 @@
-
 <!doctype html>
 <html>
 <head>
-    <link rel="icon" type="image/png" href="/favicon.png"/>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <style>
     a:link {
         text-decoration: underline;
-        
     }
     a:visited {
         text-decoration: none;
@@ -40,7 +36,13 @@
 
     a.circle:hover {
         text-decoration: none;
+        }
+
+    .eyes {
+      position : absolute;
+      top: -5px; left:155px;
     }
+
 }
 
 </style>
@@ -77,16 +79,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta property="og:image" content="">
-    <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
     <meta name="theme-color" content="#263959">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
     <!-- Styles -->
-    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
 <div class="wrapper">
@@ -103,10 +101,12 @@
 
 <!--<div class="content-box clearfix">-->
   <article class="article-page">
+    <script src="jquery.js"></script>
   <div class="page-content">
     
     <div class="page-cover-image">
-        
+        <script src="jquery.js"></script>
+        <script src="jquery.min.js"> </script>
     <script> function classLink() {
            window.open('http://bebi103.caltech.edu.s3-website-us-east-1.amazonaws.com/2020b/index.html', '_blank');} </script>
       <figure>
@@ -118,26 +118,29 @@
                   strongly believes she has seen a mule"<p12></center>
       <center>...</center>
 
-      <div class="baye"><center><img src="Thomas_Bayes_blink.gif" width="300" usemap="#mapname"></img>
-      </center></div>
 
+      <div style="position: relative; left:0; top:0;">
+            <div class="baye" id="bayes"><center><img src="Thomas_Bayes_blink.gif" width="300" usemap="#mapname"></center></div>
+
+            <!-- <div id="lefteye"><center><img src="left_eye.png" width="300" class="eyes">
+            </center></div>
+
+            <div id="righteye"><center><img src="right_eye.png" width="300" class="eyes">
+          </div> -->
+          
         <map name="mapname">
-            <area shape="rect" coords="115,70,135,90" href="      https://www.youtube.com/watch?v=Yl9rBdKlh7E&ab_channel=WebofStories-LifeStoriesofRemarkablePeople" target="_blank"/>
+            <area shape="rect" coords="115,70,135,90" href="https://www.youtube.com/watch?v=Yl9rBdKlh7E&ab_channel=WebofStories-LifeStoriesofRemarkablePeople" target="_blank"/>
             <area shape="circle" coords="163,78,11" href="https://www.youtube.com/watch?v=Yl9rBdKlh7E&ab_channel=WebofStories-LifeStoriesofRemarkablePeople"  target="_blank" />
         </map>
-        
-    
+    </div>
 
-
-</div>
     
-    <script src="jquery.js"></script>
 
 
 <!-- TITLE -->
     <h1 id="Caulobacter">A Bayesian Appr<span><a href="http://github.com/atisor73" target="_blank"><i class="fa fa-github"></i></a></span>ach <ul class="github"></h1>
             <p> <strong>
-                A much more conscientious analysis can be performed by constructing a hierarchical model that captures the specific framework of the experiment and the livelihood of our caulobacter. The way in which we define the parameters, along with their actual numerical results, will ultimately hold more meaning and make for a slicker, stronger inference. </strong></p>
+                The following is a continuation of our study of individual <em>Caulobacter Crescentus</em> cell division; the first part can be found <a href="file:///Users/rosita/bi103/bi103a/CCTV/index.html" target="_blank">here</a>. A much more conscientious analysis can be performed by constructing a hierarchical model that captures the specific framework of the experiment and the livelihood of our caulobacter. The way in which we define the parameters, along with their actual numerical results, will ultimately hold more meaning and make for a slicker, stronger inference. </strong></p>
 <!-- MOTIVATIONS --------------------------------------------------------------->
         <p> When we first look at our data, bacterium I undergoes ~20 growth events while bacterium II ~90. Previously, to capture this nuance, we divided our analysis for the two sets of data, and gained a greater understanding for parameters that were very specific to the cells that were being studied. This makes the notion of generalizing these parameters to the entire species require quite the cognitive leap. Comparing the resulting parameters between the cells was awkard as well, given their massive difference in the number of collected growth events.  This separation is not <i>so</i> obscene in this experiment since we are truly interested in the qualitative notions of linearity vs. exponentiality, and not so much the actual values of \(a_0\) and \(k\) themselves. However, we do not have to submit ourselves to such masochism! A bayesian approach will understand the additional layer of two distinct cells, along with the fact that they both inherit more global parameters, and will ultimately help guide our reasoning with more meaningful, more reflective, and more generalizable results.
                    </p>
@@ -159,16 +162,6 @@
 <!-- PRIORS ---------------------------------------------------------------->
 <script> function showa0Prior() {
     var x = document.getElementById("prior_a0");
-    $(document).ready(function(){
-               var head = document.getElementsByTagName("head")[0], script;
-                 script = document.createElement("script");
-                 script = "MathJax={chtml: {scale:2, minScale:1.5,}};"
-                  head.appendChild(script);
-                 script = document.createElement("script");
-                  script.type = "text/javascript";
-                 script.src ="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML";
-                 head.appendChild(script);
-                 });
         if (x.style.display=="none") {
             $(document).ready(function(){
                               $('#prior_a0').slideDown(3000);
@@ -211,7 +204,7 @@
     <figcaption style="background-color: rgb(0, 0, 0, 0.05); font-weight:bold; text-align: center; border-radius: 5px;" onclick="showa0Prior()"><h4>PRIOR DISTRIBUTION FOR <span>\(a_0\)</span></h4>
     </figcaption>
 </figure>
-<div id="prior_a0"; style="display:none;">
+<div id="prior_a0"; style="display:none;" >
         <h4>Sinusoidal Suspicions</h4>
             <p>From the growth plots, \(\large{a_0}\) seems to behave sinusoidally. We know from last term, that our times between growth rates remain fairly constant, so let's see what the CDF of random draws from a uniformly dense distribution of a sine function looks like, and think about what distributions we should look for.</p>
             <center>
@@ -1025,7 +1018,7 @@
             <h4>Bounding \(\sigma_{ao}\)</h4>
             <p>A tolerance of 0.25μ\(\large{\mathrm{m}^2}\) will be set for the area, for the reasons stated above. An exponential with rate 1/20 will work. We thus have the following:
             </p>
-        </div>
+  </div>
         <p> \begin{align}
         ao_{\mathrm{I}i} &\sim \mathrm{Normal}(\mu_{ao\mathrm{I}}, \sigma_{ao\mathrm{I}})\\[0.5em]
         ao_{\mathrm{II}i} &\sim \mathrm{Normal}(\mu_{ao\mathrm{II}}, \sigma_{ao\mathrm{II}})\\[1em]
@@ -2929,7 +2922,7 @@
            <span style="font-size:10pt">MCMC</span> approximates the target distribution (a complicated integral) by instead discretely summing over all states of Markov chains.
            Strong geometric ergodicity is necessary for fast convergence (fast by our computational standards and resources); however, actual <em>proof</em> of ergodicity is often implausible. Instead, after given our input parameters for how we choose to discretize the sampler, we can look for instances where our chain exhibits symptoms of straying from ergodicity in the form of <em>divergences</em>, where high curvatures in our distribution make for a sticky terrain the chain cannot properly explore.<br>
            As divergences serve as a lower bound for ergodicity, some divergences aren't actually instances of ergodic failures. Decreasing the step size (increasing <code_remark>adapt_delta</code_remark>) minimizes this mislabeling.
-           In the case that decreasing step size does <em>not</em> reduce divergences and they remain fairly constant, it is likely the case that Hamiltonian transition itself is not ergodic in the first place.
+           In the case that decreasing step size does <em>not</em> reduce divergences and they remain fairly constant, it is likely the case that the Hamiltonian transition itself is not ergodic in the first place.
            Ironically, if lowering the step size <em>increases</em> your divergences, this means you are sampling deeper and deeper into the funnel. Something that keeps us from going down the rabbit hole is <em>noncentering</em>! <a href="https://mc-stan.org/users/documentation/case-studies/divergences_and_bias.html" target="_blank" style="text-decoration:none;" class="circle"><span class="link_emoji circle">&#10160; </span> </a>
           <br></br>
           
@@ -2946,7 +2939,7 @@
           <a id="note3" href="#measures" style="margin-bottom:0; text-decoration:none;">(3)</a><br>
       
           ess-tail: <br>
-          By construction, there will be some lingering anticorrelation within a chain. To estimate what constitutes an 'effective' sample size, ess-bulk studies the center, while ess-tail explores convergence properties of the boundary values (5% and 95% quantiles). This is useful in recognizing how distribution tails of varying magnitudes can affect our sampler. Note that these diagnostic measures are human-designed probes to try and diagnose misbehavior; there are many models which escape detection, and many more that require more careful thought.
+          By construction, there will be some lingering anticorrelation within a chain. To estimate what constitutes an <em>effective</em> sample size, ess-bulk studies the center, while ess-tail explores convergence properties of the boundary values (5% and 95% quantiles). This is useful in recognizing how distribution tails of varying magnitudes can affect our sampler. Note that these diagnostic measures are human-designed probes to try and diagnose misbehavior; there are many models which escape detection, and many more that require more careful thought.
 <a href="https://arxiv.org/pdf/1903.08008.pdf" target="_blank" style="text-decoration:none" > <span class="link_emoji">&#10160; </span></a><br></br>
            
                     
